@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/l0nley/Net.Torrent.Tracker.Common.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>torrent, bittorrent, tracker</PackageTags>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/l0nley/Net.Torrent.Tracker.Common/master/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
