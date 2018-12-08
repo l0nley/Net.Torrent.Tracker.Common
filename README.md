@@ -1,4 +1,4 @@
-# Net.Torrent
+# Net.Torrent.Tracker.Common
 [![Build Status](https://travis-ci.com/l0nley/Net.Torrent.Tracker.Common.svg?branch=master)](https://travis-ci.com/l0nley/Net.Torrent.Tracker.Common)
 Net.Torrent.Tracker.Common is library to create/parse requests/response to the torrent trackers
 Features:
