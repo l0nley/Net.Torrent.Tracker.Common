@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>7.2</LangVersion>
+    <Authors>Uladzimir Harabtsou &lt;hofvl0nley@gmail.com&gt;</Authors>
+    <Copyright>Uladzimir Harabtsou &lt;hofvl0nley@gmail.com&gt;</Copyright>
+    <PackageProjectUrl>https://github.com/l0nley/Net.Torrent.Tracker.Common</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/l0nley/Net.Torrent.Tracker.Common.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>torrent, bittorrent, tracker</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Net.Torrent" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>
