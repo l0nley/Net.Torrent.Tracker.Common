@@ -6,7 +6,7 @@ namespace Net.Torrent.Tracker.Common
     /// <summary>
     ///  Announce structure
     /// </summary>
-    public readonly struct Announce
+    public readonly struct AnnounceRequest
     {
         /// <summary>
         ///  Info has to announce
@@ -48,9 +48,19 @@ namespace Net.Torrent.Tracker.Common
         /// </summary>
         public EventType Event { get; }
 
+        /// <summary>
+        /// Indicates connection id for UDP requests
+        /// </summary>
+        public long? ConnectionId { get; }
 
         /// <summary>
-        /// Creates new <see cref="Announce"/>
+        /// Indicates transaction id for UDP requests
+        /// </summary>
+        public int? TransactionId { get; }
+
+
+        /// <summary>
+        /// Creates new <see cref="AnnounceRequest"/>
         /// </summary>
         /// <param name="hash">Info hash</param>
         /// <param name="peerId">Peer id</param>
@@ -62,10 +72,10 @@ namespace Net.Torrent.Tracker.Common
         /// <param name="address">Peer address</param>
         /// <exception cref="ArgumentNullException">If <paramref name="hash"/>, <paramref name="peerId"/> is null</exception>
         /// <exception cref="ArgumentException">If <paramref name="hash"/> or <paramref name="peerId"/> have invalid length</exception>
-        public Announce(byte[] hash, byte[] peerId, ushort port, State state,
-            int key = 0, int numWant = -1, EventType eventType = EventType.None, IPAddress address = null)
+        public AnnounceRequest(byte[] hash, byte[] peerId, ushort port, State state,
+            int key = 0, int numWant = -1, EventType eventType = EventType.None, IPAddress address = null,
+            long? connectionId = null, int? transactionId = null)
         {
-
             Hash = hash ?? throw new ArgumentNullException(nameof(hash));
             if (hash.Length != 20)
             {
@@ -82,6 +92,8 @@ namespace Net.Torrent.Tracker.Common
             Event = eventType;
             NumWant = numWant;
             Key = key;
+            ConnectionId = connectionId;
+            TransactionId = transactionId;
         }
     }
 }

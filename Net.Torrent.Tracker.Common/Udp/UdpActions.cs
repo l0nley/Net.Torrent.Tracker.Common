@@ -3,7 +3,7 @@
     /// <summary>
     /// Udp action constants
     /// </summary>
-    public enum UdpAction : int
+    public enum UdpActions : int
     {
         /// <summary>
         /// Connect request/response
@@ -18,6 +18,16 @@
         /// <summary>
         /// Scrape request/response
         /// </summary>
-        Scrape = 2
+        Scrape = 2,
+
+        /// <summary>
+        /// Error response
+        /// </summary>
+        Error = 3,
+
+        /// <summary>
+        /// Unknown action
+        /// </summary>
+        Unknown = int.MaxValue
     }
 }

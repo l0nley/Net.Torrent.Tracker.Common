@@ -1,3 +1,4 @@
+using Net.Torrent.Tracker.Common.Http;
 using System;
 using System.Globalization;
 using System.Net.Http;
@@ -25,15 +26,18 @@ namespace Net.Torrent.Tracker.Common.Test
         public async Task PerformsRequest()
         {
             var peerId = GeneratePeerId();
-            var announcement = new Announce(Hash, Encoding.ASCII.GetBytes(peerId), 6882, new State(0, 0, 0));
+            var announcement = new AnnounceRequest(Hash, Encoding.ASCII.GetBytes(peerId), 6882, new State(0, 0, 0));
             using (var httpClient = new HttpClient())
             {
-                var helper = new TrackerHelper();
-                var request = helper.CreateHttpAnnounceRequest(Tracker, announcement);
-                var response = await httpClient.SendAsync(request);
+                var helper = new DefaultHttpSerializer(false);
+                var req = new HttpRequestMessage();
+                req.Headers.Clear();
+                req.Headers.Add("User-Agent", "something");
+                req.RequestUri = helper.Serialize(Tracker, announcement);
+                var response = await httpClient.SendAsync(req);
                 Assert.True(response.IsSuccessStatusCode);
                 var bytes = await response.Content.ReadAsByteArrayAsync();
-                var resp = helper.ParseHttpAnnounceResponse(bytes);
+                var resp = helper.Deserialize(bytes);
                 Assert.True(resp.Peers.Count > 0);
             }
         }
